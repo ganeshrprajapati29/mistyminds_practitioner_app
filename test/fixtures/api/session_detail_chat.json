@@ -1,0 +1,15 @@
+{
+  "id": "6abcd4ff2525925e80a0e016",
+  "clientId": "6abcd4fe2525925e80a0dec9",
+  "clientName": "Anonymous Client",
+  "anonymous": true,
+  "start": "2026-09-30T09:23:10.634Z",
+  "durationMinutes": 50,
+  "mode": "chat",
+  "status": "upcoming",
+  "fee": 600,
+  "concern": "Anxiety",
+  "notes": null,
+  "cancelReason": null,
+  "live": true
+}

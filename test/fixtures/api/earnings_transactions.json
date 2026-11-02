@@ -1,0 +1,292 @@
+[
+  {
+    "id": "6abcd4fe2525925e80a0dfbb",
+    "title": "Talk Now session",
+    "subtitle": "Anonymous Client · 22 min",
+    "amount": 450,
+    "type": "sessionCredit",
+    "status": "pending",
+    "date": "2026-09-29T14:30:00.000Z",
+    "mode": "chat"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfbd",
+    "title": "Video session",
+    "subtitle": "Riya · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "pending",
+    "date": "2026-09-27T05:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfbf",
+    "title": "Payout to HDFC ••4821",
+    "subtitle": "Weekly settlement",
+    "amount": 5200,
+    "type": "payout",
+    "status": "completed",
+    "date": "2026-09-26T04:30:00.000Z",
+    "mode": null
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfc1",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-24T12:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfc3",
+    "title": "Video session",
+    "subtitle": "Meera · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-20T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfc7",
+    "title": "Payout to HDFC ••4821",
+    "subtitle": "Weekly settlement",
+    "amount": 6800,
+    "type": "payout",
+    "status": "completed",
+    "date": "2026-09-19T04:30:00.000Z",
+    "mode": null
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfc5",
+    "title": "Talk Now session",
+    "subtitle": "Anonymous Client · 18 min",
+    "amount": 400,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-18T15:30:00.000Z",
+    "mode": "chat"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df36",
+    "title": "Video session",
+    "subtitle": "Riya · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-16T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df77",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-10T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfb9",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-10T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df2e",
+    "title": "Video session",
+    "subtitle": "Riya · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-09-02T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df86",
+    "title": "Video session",
+    "subtitle": "Meera · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-31T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df70",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-26T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfb2",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-26T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df27",
+    "title": "Video session",
+    "subtitle": "Riya · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-16T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df7f",
+    "title": "Video session",
+    "subtitle": "Meera · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-16T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df68",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-11T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfaa",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-08-11T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df20",
+    "title": "Video session",
+    "subtitle": "Riya · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-07-30T06:30:00.000Z",
+    "mode": "video"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df61",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-07-27T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfa3",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-07-27T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df5a",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-07-12T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df9c",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-07-12T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df53",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-06-27T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df95",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-06-27T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df4c",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-06-12T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df8e",
+    "title": "Audio session",
+    "subtitle": "Arjun · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-06-12T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df44",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-05-28T06:30:00.000Z",
+    "mode": "audio"
+  },
+  {
+    "id": "6abcd4fe2525925e80a0df3d",
+    "title": "Audio session",
+    "subtitle": "Karan · 50 min",
+    "amount": 1200,
+    "type": "sessionCredit",
+    "status": "completed",
+    "date": "2026-05-13T06:30:00.000Z",
+    "mode": "audio"
+  }
+]

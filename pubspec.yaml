@@ -1,0 +1,112 @@
+name: mistyminds_practitioner
+description: "Misty Minds Partner - the psychologist / therapist app (UI prototype on mock data)."
+publish_to: 'none'
+
+version: 1.0.0+2
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State management (same stack as the Misty Minds client app)
+  flutter_riverpod: ^2.6.1
+
+  # Navigation
+  go_router: ^14.6.2
+
+  # Brand SVG icons
+  flutter_svg: ^2.0.16
+
+  # Date / currency formatting
+  intl: ^0.20.2
+
+  # Backend: HTTP client + secure token storage
+  dio: ^5.7.0
+  flutter_secure_storage: ^9.2.2
+
+  # Holds the native splash until the first frame is ready
+  flutter_native_splash: ^2.4.4
+  agora_rtc_engine: ^6.6.4
+  permission_handler: 12.0.1
+  socket_io_client: ^3.1.6
+  firebase_core: ^4.15.0
+  firebase_messaging: ^16.7.0
+  flutter_local_notifications: ^22.3.1
+  google_sign_in: ^7.2.0
+  image_picker: ^1.2.3
+  file_picker: ^11.0.3
+  url_launcher: ^6.3.2
+  audioplayers: ^6.7.1
+  video_player: ^2.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # Asset preparation, launcher icons and native splash
+  image: ^4.3.0
+  flutter_launcher_icons: ^0.14.2
+
+flutter:
+  uses-material-design: true
+
+  # Only app-ready artwork is bundled. The raw drops in `assets/` (reference
+  # screenshots, black-backed renders) are processed by
+  # `tool/prepare_assets.dart` into `assets/images/` and `assets/brand/`.
+  assets:
+    - assets/images/
+    - assets/brand/
+    - assets/sounds/
+    - assets/icons/nav/
+    - assets/icon_audio.svg
+    - assets/icon_calendar.svg
+    - assets/icon_chat.svg
+    - assets/icon_clients.svg
+    - assets/icon_clock.svg
+    - assets/icon_home.svg
+    - assets/icon_notification.svg
+    - assets/icon_profile.svg
+    - assets/icon_sessions.svg
+    - assets/icon_talk_now.svg
+    - assets/icon_video.svg
+    - assets/icon_wallet.svg
+
+  fonts:
+    - family: PlayfairDisplay
+      fonts:
+        - asset: assets/fonts/PlayfairDisplay-Variable.ttf
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Variable.ttf
+    - family: DancingScript
+      fonts:
+        - asset: assets/fonts/DancingScript-Variable.ttf
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/brand/app_icon.png"
+  adaptive_icon_background: "assets/brand/app_icon_background.png"
+  adaptive_icon_foreground: "assets/brand/app_icon_foreground.png"
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: "assets/brand/app_icon.png"
+    background_color: "#FBF8FF"
+    theme_color: "#7654F7"
+
+flutter_native_splash:
+  color: "#FBF8FF"
+  image: "assets/brand/splash_logo.png"
+  android_12:
+    color: "#FBF8FF"
+    image: "assets/brand/splash_logo_android12.png"
+  fullscreen: false
+  web: false

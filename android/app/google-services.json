@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "191814432924",
+    "project_id": "mistyminds",
+    "storage_bucket": "mistyminds.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191814432924:android:4fce17898adc2a07b85559",
+        "android_client_info": {
+          "package_name": "in.mistyminds.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191814432924-fg2747a45pa3emdd3a87ukvar7rat4si.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.mistyminds.app",
+            "certificate_hash": "2c53ae0d77f2702cb472247a961ab6276c63ec2d"
+          }
+        },
+        {
+          "client_id": "191814432924-qgnu3keomt29er9phon68dl1o6d45705.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.mistyminds.app",
+            "certificate_hash": "6d335c29365a8197d2f449f3787728fcc2595605"
+          }
+        },
+        {
+          "client_id": "191814432924-11komn2g1i6jv8ctlbah0t0abtp5e4td.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Mx1LuVQhetrOu8I46os4ZRFFANMeA8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191814432924-11komn2g1i6jv8ctlbah0t0abtp5e4td.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "191814432924-5dj1mrvtt4njn1pie4hafirvi7gjc22g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.mistyminds.partner"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191814432924:android:c4dcc7fe4cd82d4cb85559",
+        "android_client_info": {
+          "package_name": "in.mistyminds.partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191814432924-4kur1o5vmdmom1gvf034j8bvq04ndeps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.mistyminds.partner",
+            "certificate_hash": "6d335c29365a8197d2f449f3787728fcc2595605"
+          }
+        },
+        {
+          "client_id": "191814432924-e9j6j0j2ohm0nk8mbe79tcv3t75qbr5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.mistyminds.partner",
+            "certificate_hash": "de76582aca919896514066b12e99a8d12bbc79d2"
+          }
+        },
+        {
+          "client_id": "191814432924-11komn2g1i6jv8ctlbah0t0abtp5e4td.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Mx1LuVQhetrOu8I46os4ZRFFANMeA8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191814432924-11komn2g1i6jv8ctlbah0t0abtp5e4td.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "191814432924-5dj1mrvtt4njn1pie4hafirvi7gjc22g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "in.mistyminds.partner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

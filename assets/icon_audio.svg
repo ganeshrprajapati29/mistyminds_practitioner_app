@@ -1,0 +1,34 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="g" x1="25" y1="18" x2="71" y2="78" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#9B72F2"/>
+    <stop offset="1" stop-color="#5146E5"/>
+  </linearGradient>
+</defs>
+
+<!-- Misty Minds soft tile -->
+<rect x="8" y="8" width="80" height="80" rx="24" fill="#F4F1FF"/>
+
+<!-- microphone -->
+<rect x="38" y="21" width="20" height="35" rx="10" fill="url(#g)"/>
+
+<!-- microphone support -->
+<path d="M30 45C30 55 38 63 48 63C58 63 66 55 66 45"
+      stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+
+<!-- stem -->
+<path d="M48 63V73" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+
+<!-- base -->
+<path d="M38 74H58" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+
+<!-- subtle mic highlight -->
+<path d="M44 29V42" stroke="white" stroke-opacity=".25"
+      stroke-width="3" stroke-linecap="round"/>
+
+<!-- small sound waves -->
+<path d="M72 38C75 41 75 48 72 51"
+      stroke="#B7A6F5" stroke-width="3" stroke-linecap="round"/>
+<path d="M77 33C82 38 82 51 77 56"
+      stroke="#B7A6F5" stroke-width="3" stroke-linecap="round"/>
+</svg>

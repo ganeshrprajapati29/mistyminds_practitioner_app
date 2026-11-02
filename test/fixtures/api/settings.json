@@ -1,0 +1,22 @@
+{
+  "notifications": {
+    "talkRequests": true,
+    "newBookings": true,
+    "sessionReminders": true,
+    "availabilityEnding": true,
+    "payments": true,
+    "tips": false
+  },
+  "availability": {
+    "sessionLength": "50 min",
+    "breakBetween": "10 min",
+    "minimumNotice": "4 hours",
+    "remindToGoOnline": false,
+    "openWeekends": true
+  },
+  "privacy": {
+    "showPhoto": true,
+    "appLock": false,
+    "hidePreviews": true
+  }
+}

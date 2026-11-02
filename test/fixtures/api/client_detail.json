@@ -1,0 +1,14 @@
+{
+  "id": "6abcd4fe2525925e80a0decc",
+  "name": "Anonymous Client",
+  "anonymous": true,
+  "sessionCount": 2,
+  "lastSession": "2026-09-30T07:30:00.000Z",
+  "firstSession": "2026-09-29T14:45:00.000Z",
+  "preferredMode": "chat",
+  "concerns": [
+    "Loneliness"
+  ],
+  "ageRange": null,
+  "privateNote": null
+}

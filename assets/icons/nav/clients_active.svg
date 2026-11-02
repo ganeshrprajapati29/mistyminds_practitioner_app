@@ -1,0 +1,29 @@
+<svg width="96" height="96" viewBox="8 8 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="g" x1="21" y1="19" x2="76" y2="78" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#9B72F2"/>
+    <stop offset="1" stop-color="#5146E5"/>
+  </linearGradient>
+</defs>
+
+<!-- Misty Minds soft tile -->
+
+
+<!-- main client -->
+<circle cx="48" cy="37" r="11" fill="url(#g)"/>
+<path d="M27 69C27 57.4 36.4 50 48 50C59.6 50 69 57.4 69 69V72H27V69Z"
+      fill="url(#g)"/>
+
+<!-- left secondary client -->
+<circle cx="27" cy="42" r="7" fill="#B7A6F5"/>
+<path d="M14 66C14 57.8 19.6 52.5 27 52.5C30.1 52.5 32.8 53.4 35 55C31.2 58.7 29 63.5 29 69H14V66Z"
+      fill="#B7A6F5"/>
+
+<!-- right secondary client -->
+<circle cx="69" cy="42" r="7" fill="#B7A6F5"/>
+<path d="M67 69C67 63.5 64.8 58.7 61 55C63.2 53.4 65.9 52.5 69 52.5C76.4 52.5 82 57.8 82 66V69H67Z"
+      fill="#B7A6F5"/>
+
+<!-- subtle highlights -->
+<circle cx="44" cy="33" r="2.3" fill="white" fill-opacity=".24"/>
+</svg>

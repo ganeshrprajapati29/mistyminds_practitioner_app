@@ -1,0 +1,23 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="g" x1="20" y1="18" x2="76" y2="78" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#9B72F2"/>
+    <stop offset="1" stop-color="#5146E5"/>
+  </linearGradient>
+</defs>
+
+<rect x="8" y="8" width="80" height="80" rx="24" fill="#F4F1FF"/>
+
+<!-- primary client -->
+<circle cx="40" cy="38" r="10" fill="url(#g)"/>
+<path d="M22 65C22 54.5 30.1 48 40 48C49.9 48 58 54.5 58 65V68H22V65Z"
+      fill="url(#g)"/>
+
+<!-- secondary client -->
+<circle cx="62.5" cy="41" r="7.5" fill="#A995F4"/>
+<path d="M57 52.5C59 51.5 61.4 51 64 51C71.7 51 78 56.1 78 64V67H62V64.5C62 59.7 60.2 55.6 57 52.5Z"
+      fill="#A995F4"/>
+
+<!-- subtle highlight -->
+<circle cx="36.5" cy="34.5" r="2.2" fill="white" fill-opacity=".25"/>
+</svg>

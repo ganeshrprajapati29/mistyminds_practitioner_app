@@ -1,0 +1,30 @@
+{
+  "session": {
+    "id": "6abcd4fe2525925e80a0ded8",
+    "clientId": "6abcd4fe2525925e80a0dec9",
+    "clientName": "Riya",
+    "anonymous": false,
+    "start": "2026-09-30T09:28:14.664Z",
+    "durationMinutes": 50,
+    "mode": "video",
+    "status": "upcoming",
+    "fee": 1200,
+    "concern": "Anxiety at work",
+    "notes": null,
+    "cancelReason": null,
+    "live": true
+  },
+  "roomId": "room_psy_se_101",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb29tSWQiOiJyb29tX3BzeV9zZV8xMDEiLCJ1c2VySWQiOiI2YWJjZDRmZDI1MjU5MjVlODBhMGRlYWIiLCJyb2xlIjoiaG9zdCIsInN0dWIiOnRydWUsImlhdCI6MTc5MDc2MDE5NCwiZXhwIjoxNzkwNzYzNzk0fQ.n7B5Cl_tBuJa3iEqfuftS5CMFZQ-SQ-ztqC8A28mUc4",
+  "conversationId": null,
+  "call": {
+    "provider": "agora",
+    "configured": true,
+    "appId": "0123456789abcdef0123456789abcdef",
+    "channel": "room_psy_se_101",
+    "uid": 2001,
+    "peerUid": 1001,
+    "token": "007eJxTYLghOD+34Fyb2qrjmWUMpmGhq58/W2UXFHHv5mFmNqP0bTsVGAwMjYxNTM3MLSwTk5JTUtPQ+UxX92TZ8DMwnMjcyMzIwMjAwsDIAOIzgUlmMMkCJvkZivLzc+MLiivji1PjDQ0MWRiMDAwMAWkjJIg=",
+    "expiresAt": "2026-09-30T10:28:14.681Z"
+  }
+}

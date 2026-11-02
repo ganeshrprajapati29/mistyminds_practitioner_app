@@ -1,0 +1,15 @@
+{
+  "id": "6abcd5012525925e80a0e0a0",
+  "clientId": "6abcd4fe2525925e80a0dec9",
+  "clientName": "Anonymous Client",
+  "anonymous": true,
+  "start": "2026-09-30T09:23:12.901Z",
+  "durationMinutes": 50,
+  "mode": "video",
+  "status": "upcoming",
+  "fee": 1200,
+  "concern": "Anxiety",
+  "notes": null,
+  "cancelReason": null,
+  "live": true
+}

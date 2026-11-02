@@ -1,0 +1,66 @@
+[
+  {
+    "id": "6abcd5012525925e80a0e0a9",
+    "kind": "talkRequest",
+    "title": "Talk Now request",
+    "body": "Someone needs to talk right now.",
+    "time": "2026-09-30T09:23:13.919Z",
+    "read": false
+  },
+  {
+    "id": "6abcd5012525925e80a0e073",
+    "kind": "talkRequest",
+    "title": "Talk Now request",
+    "body": "Someone needs to talk right now.",
+    "time": "2026-09-30T09:23:13.152Z",
+    "read": false
+  },
+  {
+    "id": "6abcd4ff2525925e80a0e01f",
+    "kind": "talkRequest",
+    "title": "Talk Now request",
+    "body": "Someone needs to talk right now.",
+    "time": "2026-09-30T09:23:11.654Z",
+    "read": false
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfcd",
+    "kind": "talkRequest",
+    "title": "Talk Now request",
+    "body": "Someone needed to talk while you were away. Go online to be reachable.",
+    "time": "2026-09-30T09:15:10.892Z",
+    "read": false
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfce",
+    "kind": "sessionBooked",
+    "title": "New session booked",
+    "body": "Meera booked a 50-min video session for tomorrow, 11:00 AM.",
+    "time": "2026-09-30T08:41:10.892Z",
+    "read": false
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfcf",
+    "kind": "sessionReminder",
+    "title": "Session reminder",
+    "body": "Your video session with Riya starts at 10:30 AM.",
+    "time": "2026-09-30T07:23:10.892Z",
+    "read": false
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfd0",
+    "kind": "availabilityEnding",
+    "title": "Availability ending soon",
+    "body": "Your 6:00 PM – 8:00 PM window ends in 15 minutes.",
+    "time": "2026-09-29T13:23:10.892Z",
+    "read": true
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dfd1",
+    "kind": "paymentReceived",
+    "title": "Payment received",
+    "body": "₹5,200 was settled to your HDFC account ending 4821.",
+    "time": "2026-09-26T09:23:10.892Z",
+    "read": true
+  }
+]

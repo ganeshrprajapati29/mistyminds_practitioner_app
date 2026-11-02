@@ -1,0 +1,25 @@
+<svg width="96" height="96" viewBox="8 8 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="g" x1="23" y1="20" x2="74" y2="76" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#9A9EB8"/>
+    <stop offset="1" stop-color="#9A9EB8"/>
+  </linearGradient>
+</defs>
+
+<!-- Misty Minds soft tile -->
+
+
+<!-- home -->
+<path d="M20.5 46.2L44.4 24.8C46.5 22.9 49.7 22.9 51.8 24.8L75.5 46.2"
+      stroke="url(#g)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path d="M27 43.5V69C27 72.3 29.7 75 33 75H63C66.3 75 69 72.3 69 69V43.5L48 25L27 43.5Z"
+      fill="url(#g)"/>
+
+<!-- door -->
+<path d="M41 75V57C41 54.8 42.8 53 45 53H51C53.2 53 55 54.8 55 57V75H41Z"
+      fill="#FFFFFF"/>
+
+<!-- subtle shine -->
+<path d="M32 47L47.5 33.5" stroke="white" stroke-opacity=".18" stroke-width="3" stroke-linecap="round"/>
+</svg>

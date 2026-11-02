@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Talk Now ringtone is referenced only by name (notification channel
+     sound), so resource shrinking must not strip it from release builds. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@raw/talk_request" />

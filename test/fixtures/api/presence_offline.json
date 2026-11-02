@@ -1,0 +1,9 @@
+{
+  "status": "offline",
+  "acceptTalkNow": true,
+  "window": {
+    "start": "18:00",
+    "end": "20:00",
+    "remainingMinutes": 120
+  }
+}

@@ -1,0 +1,34 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="purple" x1="21" y1="24" x2="73" y2="73" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#9B72F2"/>
+    <stop offset="1" stop-color="#5146E5"/>
+  </linearGradient>
+  <linearGradient id="mint" x1="48" y1="25" x2="65" y2="39" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#8EE9C5"/>
+    <stop offset="1" stop-color="#45C69B"/>
+  </linearGradient>
+</defs>
+
+<!-- soft tile -->
+<rect x="8" y="8" width="80" height="80" rx="24" fill="#F4F1FF"/>
+
+<!-- card peeking from wallet -->
+<path d="M43 28L62 23.5C65 22.8 67.8 24.7 68.5 27.7L70.2 35L47 40.5L43 28Z"
+      fill="url(#mint)"/>
+
+<!-- wallet -->
+<path d="M22 34C22 29.6 25.6 26 30 26H57C61.4 26 65 29.6 65 34V38H70C73.3 38 76 40.7 76 44V63C76 67.4 72.4 71 68 71H30C25.6 71 22 67.4 22 63V34Z"
+      fill="url(#purple)"/>
+
+<!-- wallet flap -->
+<path d="M61 42H72C74.2 42 76 43.8 76 46V57C76 59.2 74.2 61 72 61H61C55.8 61 52 57.1 52 51.5C52 45.9 55.8 42 61 42Z"
+      fill="#6553E8"/>
+
+<!-- clasp -->
+<circle cx="62.5" cy="51.5" r="4" fill="white"/>
+<circle cx="62.5" cy="51.5" r="2" fill="#B8A8F4"/>
+
+<!-- subtle shine -->
+<path d="M29 34H54" stroke="white" stroke-opacity=".22" stroke-width="3" stroke-linecap="round"/>
+</svg>

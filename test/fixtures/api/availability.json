@@ -1,0 +1,65 @@
+{
+  "days": [
+    {
+      "date": "2026-09-30",
+      "slots": [
+        {
+          "id": "av_1_1",
+          "start": "18:00",
+          "end": "20:00",
+          "bookedMinutes": 0
+        },
+        {
+          "id": "av_1_2",
+          "start": "20:00",
+          "end": "21:00",
+          "bookedMinutes": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "slots": [
+        {
+          "id": "av_2_1",
+          "start": "10:00",
+          "end": "13:00",
+          "bookedMinutes": 50
+        }
+      ]
+    },
+    {
+      "date": "2026-10-03",
+      "slots": [
+        {
+          "id": "av_3_1",
+          "start": "17:00",
+          "end": "20:00",
+          "bookedMinutes": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-10-05",
+      "slots": [
+        {
+          "id": "av_4_1",
+          "start": "09:00",
+          "end": "12:00",
+          "bookedMinutes": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-10-08",
+      "slots": [
+        {
+          "id": "av_5_1",
+          "start": "18:00",
+          "end": "21:00",
+          "bookedMinutes": 0
+        }
+      ]
+    }
+  ]
+}

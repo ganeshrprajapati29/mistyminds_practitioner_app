@@ -1,0 +1,108 @@
+{
+  "psychologist": {
+    "id": "6abcd4fd2525925e80a0deab",
+    "name": "Dr. Ananya Mehta",
+    "title": "Clinical Psychologist",
+    "email": "ananya.mehta@mistyminds.in",
+    "phone": "+91 98200 41276",
+    "bio": "I work with adults navigating anxiety, burnout, relationships and grief. My approach blends CBT with mindfulness — practical, warm and always at your pace.",
+    "photoUrl": null,
+    "qualifications": [
+      {
+        "degree": "M.Phil. Clinical Psychology",
+        "institution": "NIMHANS, Bengaluru",
+        "year": 2016
+      },
+      {
+        "degree": "M.A. Psychology",
+        "institution": "University of Delhi",
+        "year": 2014
+      },
+      {
+        "degree": "Certified CBT Practitioner",
+        "institution": "Beck Institute (online)",
+        "year": 2019
+      }
+    ],
+    "experienceYears": 8,
+    "experience": [
+      {
+        "role": "Consultant Clinical Psychologist",
+        "organisation": "Private practice, Mumbai",
+        "period": "2020 – Present"
+      },
+      {
+        "role": "Clinical Psychologist",
+        "organisation": "Fortis Healthcare, Mumbai",
+        "period": "2016 – 2020"
+      }
+    ],
+    "specializations": [
+      "Anxiety",
+      "Stress & Burnout",
+      "Relationships",
+      "Grief & Loss",
+      "Self-esteem",
+      "Sleep"
+    ],
+    "languages": [
+      "English",
+      "Hindi",
+      "Marathi"
+    ],
+    "modes": [
+      "chat",
+      "audio",
+      "video"
+    ],
+    "registration": {
+      "council": "Rehabilitation Council of India (RCI)",
+      "number": "A43127",
+      "validTill": "March 2029",
+      "verified": true
+    },
+    "documents": [
+      {
+        "name": "RCI Registration Certificate",
+        "fileName": "rci_certificate.pdf",
+        "status": "verified"
+      },
+      {
+        "name": "M.Phil. Degree Certificate",
+        "fileName": "mphil_degree.pdf",
+        "status": "verified"
+      },
+      {
+        "name": "Government ID (Aadhaar / Passport)",
+        "fileName": "passport.pdf",
+        "status": "verified"
+      },
+      {
+        "name": "CBT Certification",
+        "fileName": "cbt_certificate.pdf",
+        "status": "underReview"
+      },
+      {
+        "name": "Professional Indemnity Insurance",
+        "fileName": null,
+        "status": "missing"
+      }
+    ],
+    "bank": {
+      "holder": "Ananya Mehta",
+      "bank": "HDFC Bank",
+      "accountMasked": "XXXX XXXX 4821",
+      "ifsc": "HDFC0000240",
+      "upi": "ananya.mehta@okhdfc",
+      "pan": "BXXPM4821K"
+    },
+    "rating": 4.9,
+    "reviewCount": 214,
+    "sessionsCompleted": 1240,
+    "sessionFee": 1200
+  },
+  "tokens": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWJjZDRmZTI1MjU5MjVlODBhMGRlYmUiLCJ0eXBlIjoiYWNjZXNzIiwicm9sZSI6InByYWN0aXRpb25lciIsImlhdCI6MTc5MDc2MDE5MSwiZXhwIjoxNzkwNzYxMDkxfQ._rkok65mKCaAV5tymdQFrPdXmINTlpIJPoT_vkPA71w",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWJjZDRmZTI1MjU5MjVlODBhMGRlYmUiLCJ0eXBlIjoicmVmcmVzaCIsImZhbWlseSI6IjYwODkzN2RkLTUwZDgtNGJlNS04MzkxLTkzYjc3MDRjMDcwNCIsImp0aSI6ImMzY2RkOWU1LWUzMDgtNDIwMC05NjA0LTNhN2ZhMjgwODA0MCIsInJvbGUiOiJwcmFjdGl0aW9uZXIiLCJpYXQiOjE3OTA3NjAxOTEsImV4cCI6MTc5MzM1MjE5MX0.WyE0vX0WJL4L0YRlDDQFWBUVofoOhzETW8X1jKXQ0tY"
+  }
+}

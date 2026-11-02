@@ -1,0 +1,43 @@
+[
+  {
+    "event": "talk:request",
+    "payload": {
+      "id": "6abcd5012525925e80a0e0a5",
+      "sessionId": "6abcd5012525925e80a0e0a0",
+      "message": "I’d like to talk to someone right now.",
+      "mode": "video",
+      "expectedMinutes": 30,
+      "anonymous": true,
+      "clientName": "Anonymous Client",
+      "requestedAt": "2026-09-30T09:23:13.913Z",
+      "concern": "Anxiety",
+      "status": "pending",
+      "expiresAt": "2026-09-30T09:25:13.912Z"
+    }
+  },
+  {
+    "event": "notification:new",
+    "payload": {
+      "id": "6abcd5012525925e80a0e0a9",
+      "kind": "talkRequest",
+      "title": "Talk Now request",
+      "body": "Someone needs to talk right now.",
+      "time": "2026-09-30T09:23:13.919Z",
+      "read": false
+    }
+  },
+  {
+    "event": "talk:resolved",
+    "payload": {
+      "id": "6abcd5012525925e80a0e0a5",
+      "status": "accepted"
+    }
+  },
+  {
+    "event": "session:ended",
+    "payload": {
+      "appointmentId": "6abcd5012525925e80a0e0a0",
+      "by": "practitioner"
+    }
+  }
+]

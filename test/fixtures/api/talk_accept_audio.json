@@ -1,0 +1,43 @@
+{
+  "request": {
+    "id": "6abcd5012525925e80a0e06f",
+    "sessionId": "6abcd5012525925e80a0e06a",
+    "message": "I’d like to talk to someone right now.",
+    "mode": "audio",
+    "expectedMinutes": 30,
+    "anonymous": true,
+    "clientName": "Anonymous Client",
+    "requestedAt": "2026-09-30T09:23:13.142Z",
+    "concern": "Anxiety",
+    "status": "accepted",
+    "expiresAt": "2026-09-30T09:25:13.141Z"
+  },
+  "session": {
+    "id": "6abcd5012525925e80a0e06a",
+    "clientId": "6abcd4fe2525925e80a0dec9",
+    "clientName": "Anonymous Client",
+    "anonymous": true,
+    "start": "2026-09-30T09:23:12.133Z",
+    "durationMinutes": 50,
+    "mode": "audio",
+    "status": "upcoming",
+    "fee": 1200,
+    "concern": "Anxiety",
+    "notes": null,
+    "cancelReason": null,
+    "live": true
+  },
+  "roomId": "room_mm2",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb29tSWQiOiJyb29tX21tMiIsInVzZXJJZCI6IjZhYmNkNGZkMjUyNTkyNWU4MGEwZGVhYiIsInJvbGUiOiJob3N0Iiwic3R1YiI6dHJ1ZSwiaWF0IjoxNzkwNzYwMTkzLCJleHAiOjE3OTA3NjM3OTN9.BUf5Pw92RA1PyuWVinfMXblvf6648x3q92HPzbvmHWo",
+  "conversationId": null,
+  "call": {
+    "provider": "agora",
+    "configured": true,
+    "appId": "0123456789abcdef0123456789abcdef",
+    "channel": "room_mm2",
+    "uid": 2001,
+    "peerUid": 1001,
+    "token": "007eJxTYHjSWOjzWuL3w4c8z1qKDzlLHNq53ttzf6PKI60vj85c0v2iwGBgaGRsYmpmbmGZmJSckpqGzme8uifLhp+BwTBZn5mRgZGBhYGRAcRnApPMYJIFTHIwFOXn58bn5hqxMBgZGBgCAHBoI/A=",
+    "expiresAt": "2026-09-30T10:28:13.392Z"
+  }
+}

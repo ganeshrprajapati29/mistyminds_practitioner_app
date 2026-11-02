@@ -1,0 +1,89 @@
+[
+  {
+    "id": "6abcd4fe2525925e80a0decc",
+    "name": "Anonymous Client",
+    "anonymous": true,
+    "sessionCount": 2,
+    "lastSession": "2026-09-30T07:30:00.000Z",
+    "firstSession": "2026-09-29T14:45:00.000Z",
+    "preferredMode": "chat",
+    "concerns": [
+      "Loneliness"
+    ],
+    "ageRange": null,
+    "privateNote": null
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dec9",
+    "name": "Riya",
+    "anonymous": false,
+    "sessionCount": 6,
+    "lastSession": "2026-09-30T05:00:00.000Z",
+    "firstSession": "2026-07-30T05:30:00.000Z",
+    "preferredMode": "video",
+    "concerns": [
+      "Anxiety",
+      "Work stress"
+    ],
+    "ageRange": "25–30",
+    "privateNote": "Responding well to grounding exercises. Revisit sleep routine next session."
+  },
+  {
+    "id": "6abcd4fe2525925e80a0dece",
+    "name": "Karan",
+    "anonymous": false,
+    "sessionCount": 11,
+    "lastSession": "2026-09-24T11:30:00.000Z",
+    "firstSession": "2026-05-13T05:30:00.000Z",
+    "preferredMode": "audio",
+    "concerns": [
+      "Relationships",
+      "Anger"
+    ],
+    "ageRange": "30–35",
+    "privateNote": "Couples work paused; continuing individual sessions."
+  },
+  {
+    "id": "6abcd4fe2525925e80a0ded0",
+    "name": "Meera",
+    "anonymous": false,
+    "sessionCount": 4,
+    "lastSession": "2026-09-20T05:30:00.000Z",
+    "firstSession": "2026-08-16T05:30:00.000Z",
+    "preferredMode": "video",
+    "concerns": [
+      "Grief & Loss"
+    ],
+    "ageRange": "40–45",
+    "privateNote": null
+  },
+  {
+    "id": "6abcd4fe2525925e80a0ded2",
+    "name": "Anonymous Client",
+    "anonymous": true,
+    "sessionCount": 1,
+    "lastSession": "2026-09-18T15:10:00.000Z",
+    "firstSession": "2026-09-18T15:10:00.000Z",
+    "preferredMode": "chat",
+    "concerns": [
+      "Exam stress"
+    ],
+    "ageRange": null,
+    "privateNote": null
+  },
+  {
+    "id": "6abcd4fe2525925e80a0ded4",
+    "name": "Arjun",
+    "anonymous": false,
+    "sessionCount": 8,
+    "lastSession": "2026-09-10T05:30:00.000Z",
+    "firstSession": "2026-06-12T05:30:00.000Z",
+    "preferredMode": "audio",
+    "concerns": [
+      "Burnout",
+      "Sleep"
+    ],
+    "ageRange": "30–35",
+    "privateNote": null
+  }
+]
