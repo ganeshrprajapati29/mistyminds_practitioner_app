@@ -127,7 +127,7 @@ class _IncomingRequestScreenState extends ConsumerState<IncomingRequestScreen> {
     super.initState();
     activeTalkRequest.value = request.id;
     // Ring until the psychologist answers (or the request goes away).
-    unawaited(RequestSounds.instance.startRinging());
+    unawaited(RequestSounds.instance.startRinging(mode: request.mode.name));
     // If the request lapses (the client left, or 2 minutes passed) while it
     // is on screen, close it rather than let the psychologist accept a ghost.
     _resolved = ref

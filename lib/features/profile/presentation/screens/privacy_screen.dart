@@ -8,8 +8,25 @@ import '../../../../core/widgets/misty_cards.dart';
 import '../../../../core/widgets/misty_menu_tile.dart';
 import '../../../../core/widgets/misty_toggle.dart';
 import '../../../../data/models/settings.dart';
+import '../../../../state/app_content_provider.dart';
 import '../../../../state/providers.dart';
 import '../widgets/profile_sub_page.dart';
+
+const String _defaultPolicyTitle = 'Client confidentiality';
+const String _defaultFooter =
+    'Session notes are private to you and are never shared with '
+    'clients or other partners.';
+const List<String> _defaultPolicy = <String>[
+  'Everything a client shares in a session stays between you and '
+      'them, except where the law or imminent risk of harm '
+      'requires otherwise.',
+  'Never record, screenshot or share session content outside '
+      'Misty Minds.',
+  'Anonymous clients must never be asked to reveal their '
+      'identity.',
+  'If you believe a client is at risk, use the in-session '
+      'safety escalation and follow the partner safety protocol.',
+];
 
 /// Privacy switches, saved to the practitioner's account.
 class PrivacyScreen extends ConsumerStatefulWidget {
@@ -55,6 +72,10 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
     final bool showPhoto = privacy['showPhoto'] ?? true;
     final bool appLock = privacy['appLock'] ?? false;
     final bool hidePreviews = privacy['hidePreviews'] ?? true;
+    // Admin console → App content → Client confidentiality policy.
+    final ContentDocument? policy = ref
+        .watch(appContentProvider)
+        .document('confidentiality');
 
     return ProfileSubPage(
       title: 'Privacy',
@@ -97,7 +118,7 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
               MistyMenuTile(
                 title: 'Client confidentiality policy',
                 icon: Icons.policy_outlined,
-                onTap: () => _policy(context),
+                onTap: () => _policy(context, policy),
               ),
               MistyMenuTile(
                 title: 'Download my data',
@@ -108,17 +129,22 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
           ),
         ),
         const SizedBox(height: AppSizes.md),
-        const MistyInfoNote(
-          text:
-              'Session notes are private to you and are never shared with '
-              'clients or other partners.',
+        MistyInfoNote(
+          text: policy != null && policy.footer.isNotEmpty
+              ? policy.footer
+              : _defaultFooter,
           icon: Icons.lock_outline_rounded,
         ),
       ],
     );
   }
 
-  void _policy(BuildContext context) {
+  void _policy(BuildContext context, ContentDocument? policy) {
+    final List<ContentSection> sections =
+        policy?.sections ??
+        _defaultPolicy
+            .map((String p) => ContentSection(heading: '', body: p))
+            .toList();
     showModalBottomSheet<void>(
       context: context,
       useRootNavigator: true,
@@ -135,22 +161,37 @@ class _PrivacyScreenState extends ConsumerState<PrivacyScreen> {
             AppSizes.xxl,
           ),
           children: <Widget>[
-            Text('Client confidentiality', style: AppTypography.displaySmall),
+            Text(
+              policy != null && policy.title.isNotEmpty
+                  ? policy.title
+                  : _defaultPolicyTitle,
+              style: AppTypography.displaySmall,
+            ),
+            if (policy != null && policy.intro.isNotEmpty) ...<Widget>[
+              const SizedBox(height: AppSizes.sm),
+              Text(policy.intro, style: AppTypography.bodyMedium),
+            ],
             const SizedBox(height: AppSizes.md),
-            for (final String p in <String>[
-              'Everything a client shares in a session stays between you and '
-                  'them, except where the law or imminent risk of harm '
-                  'requires otherwise.',
-              'Never record, screenshot or share session content outside '
-                  'Misty Minds.',
-              'Anonymous clients must never be asked to reveal their '
-                  'identity.',
-              'If you believe a client is at risk, use the in-session '
-                  'safety escalation and follow the partner safety protocol.',
-            ])
+            for (final ContentSection p in sections)
               Padding(
                 padding: const EdgeInsets.only(bottom: AppSizes.md),
-                child: Text(p, style: AppTypography.bodyMedium),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    if (p.heading.isNotEmpty)
+                      Text(p.heading, style: AppTypography.title),
+                    if (p.body.isNotEmpty)
+                      Text(p.body, style: AppTypography.bodyMedium),
+                    if (p.hasLink)
+                      TextButton.icon(
+                        onPressed: () => openContentLink(p.linkUrl),
+                        icon: const Icon(Icons.open_in_new_rounded, size: 16),
+                        label: Text(
+                          p.linkLabel.isEmpty ? 'Open link' : p.linkLabel,
+                        ),
+                      ),
+                  ],
+                ),
               ),
           ],
         ),

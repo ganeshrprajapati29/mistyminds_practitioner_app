@@ -179,6 +179,27 @@ class ProfessionalStep extends StatelessWidget {
         ),
         _gap,
         MistyTextField(
+          label: 'Years of experience',
+          controller: form.experienceYears,
+          hint: 'e.g. 5',
+          prefixIcon: Icons.timeline_rounded,
+          keyboardType: TextInputType.number,
+          maxLength: 2,
+          inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          validator: (String? v) {
+            final String text = (v ?? '').trim();
+            if (text.isEmpty) return 'Please enter your years of experience';
+            final int? years = int.tryParse(text);
+            if (years == null || years < 0 || years > 70) {
+              return 'Enter a number between 0 and 70';
+            }
+            return null;
+          },
+        ),
+        _gap,
+        MistyTextField(
           label: 'Current workplace (optional)',
           controller: form.workplace,
           hint: 'Hospital, clinic or private practice',
@@ -396,7 +417,13 @@ class _DocumentsStepState extends ConsumerState<DocumentsStep> {
   ApplicationForm get form => widget.form;
 
   Future<void> _upload(String name) async {
-    final PickedFile? file = await pickDocument(context);
+    // The professional photo goes through the photo picker (camera or
+    // gallery, resized and compressed) — a full-size camera picture is often
+    // bigger than the server accepts. Certificates can still be PDFs.
+    final bool isPhoto = name == ApplicationForm.photoDocument;
+    final PickedFile? file = await (isPhoto
+        ? pickPhoto(context)
+        : pickDocument(context));
     if (file == null || !mounted) return;
     setState(() => _uploading.add(name));
     String? reference;
@@ -410,6 +437,7 @@ class _DocumentsStepState extends ConsumerState<DocumentsStep> {
     if (ok && reference != null) {
       form.documents[name] = reference!;
       form.documentNames[name] = file.name;
+      if (isPhoto) form.photoBytes = file.bytes;
       widget.onChanged();
       AppFeedback.toast(context, '$name uploaded');
     }
@@ -430,12 +458,23 @@ class _DocumentsStepState extends ConsumerState<DocumentsStep> {
                   ? 'Uploading…'
                   : form.documentNames[name] ??
                         (form.documents.containsKey(name) ? 'Uploaded' : null),
+              preview:
+                  name == ApplicationForm.photoDocument &&
+                      form.documents.containsKey(name)
+                  ? form.photoBytes
+                  : null,
+              uploadLabel: name == ApplicationForm.photoDocument
+                  ? 'Add photo'
+                  : 'Upload',
               onUpload: () {
                 if (!_uploading.contains(name)) _upload(name);
               },
               onRemove: () {
                 form.documents.remove(name);
                 form.documentNames.remove(name);
+                if (name == ApplicationForm.photoDocument) {
+                  form.photoBytes = null;
+                }
                 widget.onChanged();
               },
             ),
@@ -461,6 +500,8 @@ class _DocumentTile extends StatelessWidget {
     required this.fileName,
     required this.onUpload,
     required this.onRemove,
+    this.preview,
+    this.uploadLabel = 'Upload',
   });
 
   final String name;
@@ -468,6 +509,10 @@ class _DocumentTile extends StatelessWidget {
   final String? fileName;
   final VoidCallback onUpload;
   final VoidCallback onRemove;
+
+  /// Image bytes to show instead of the icon (the professional photo).
+  final List<int>? preview;
+  final String uploadLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -478,18 +523,34 @@ class _DocumentTile extends StatelessWidget {
       shadow: false,
       child: Row(
         children: <Widget>[
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              color: done ? AppColors.mintSoft : AppColors.lavender,
+          if (preview != null)
+            ClipRRect(
               borderRadius: BorderRadius.circular(14),
+              child: Image.memory(
+                Uint8List.fromList(preview!),
+                width: 56,
+                height: 56,
+                fit: BoxFit.cover,
+                gaplessPlayback: true,
+              ),
+            )
+          else
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: done ? AppColors.mintSoft : AppColors.lavender,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: Icon(
+                done
+                    ? Icons.check_rounded
+                    : (uploadLabel == 'Add photo'
+                          ? Icons.add_a_photo_outlined
+                          : Icons.description_outlined),
+                color: done ? AppColors.mintInk : AppColors.primary,
+              ),
             ),
-            child: Icon(
-              done ? Icons.check_rounded : Icons.description_outlined,
-              color: done ? AppColors.mintInk : AppColors.primary,
-            ),
-          ),
           const SizedBox(width: AppSizes.md),
           Expanded(
             child: Column(
@@ -520,7 +581,7 @@ class _DocumentTile extends StatelessWidget {
             TextButton.icon(
               onPressed: onUpload,
               icon: const Icon(Icons.upload_rounded, size: 18),
-              label: const Text('Upload'),
+              label: Text(uploadLabel),
             ),
         ],
       ),
@@ -635,6 +696,14 @@ class ReviewStep extends StatelessWidget {
           rows: <(String, String)>[
             ('Title', form.title),
             ('Qualification', _or(form.degree.text)),
+            (
+              'Experience',
+              _or(
+                form.experienceYears.text.trim().isEmpty
+                    ? ''
+                    : form.experienceLabel,
+              ),
+            ),
           ],
         ),
         _ReviewCard(

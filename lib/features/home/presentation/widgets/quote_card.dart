@@ -8,7 +8,9 @@ import '../../../../core/theme/app_text_styles.dart';
 /// The lavender "You create a safer, kinder world." card that closes the
 /// dashboard, with soft cloud puffs along its lower edge.
 class QuoteCard extends StatelessWidget {
-  const QuoteCard({super.key});
+  const QuoteCard({super.key, this.text = AppStrings.homeQuote});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class QuoteCard extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          AppStrings.homeQuote,
+                          text,
                           style: AppTypography.display(
                             19,
                             weight: FontWeight.w500,

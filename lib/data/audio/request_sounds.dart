@@ -37,10 +37,15 @@ class RequestSounds {
 
   AudioPlayer? _ringer;
 
+  /// Ringtones the admin set (App content → Ringtones), by request type:
+  /// 'audio' | 'video' | 'chat' → https URL. Kept up to date by the app
+  /// content provider; empty → the built-in tone.
+  static Map<String, String> customRingtones = <String, String>{};
+
   bool get isRinging => _ringer != null;
 
   /// Starts the looping ringtone (once — a second call while ringing is a no-op).
-  Future<void> startRinging() async {
+  Future<void> startRinging({String? mode}) async {
     if (!enabled || _ringer != null) return;
     final AudioPlayer player = AudioPlayer();
     _ringer = player;
@@ -50,6 +55,15 @@ class RequestSounds {
       await player.setReleaseMode(ReleaseMode.loop);
       // Stopped while this was still loading? Don't start late.
       if (_ringer != player) return;
+      final String? custom = mode == null ? null : customRingtones[mode];
+      if (custom != null && custom.isNotEmpty) {
+        try {
+          await player.play(UrlSource(custom));
+          return;
+        } catch (e) {
+          debugPrint('Custom ringtone failed, using the built-in one: $e');
+        }
+      }
       await player.play(AssetSource(_ring));
     } catch (e) {
       debugPrint('Talk Now ringtone unavailable: $e');

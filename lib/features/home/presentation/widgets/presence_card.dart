@@ -13,6 +13,7 @@ import '../../../../core/widgets/misty_status_chip.dart';
 import '../../../../core/widgets/misty_toggle.dart';
 import '../../../../data/models/enums.dart';
 import '../../../../navigation/app_routes.dart';
+import '../../../../state/app_content_provider.dart';
 import '../../../../state/providers.dart';
 
 /// "Currently Offline / Go online when you're ready…" with the toggle and the
@@ -24,21 +25,23 @@ class PresenceCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final PresenceState presence = ref.watch(presenceProvider);
     final PresenceController controller = ref.read(presenceProvider.notifier);
+    final AppContent c = ref.watch(appContentProvider);
+    String t(String key, String fallback) => c.text('dashboard', key, fallback);
 
     final (String title, String hint, Color dot) = switch (presence.status) {
       PresenceStatus.offline => (
-        AppStrings.currentlyOffline,
-        AppStrings.offlineHint,
+        t('presence.offline.title', AppStrings.currentlyOffline),
+        t('presence.offline.hint', AppStrings.offlineHint),
         AppColors.textTertiary,
       ),
       PresenceStatus.online => (
-        AppStrings.youreOnline,
-        AppStrings.onlineHint,
+        t('presence.online.title', AppStrings.youreOnline),
+        t('presence.online.hint', AppStrings.onlineHint),
         AppColors.online,
       ),
       PresenceStatus.paused => (
-        AppStrings.availabilityPaused,
-        AppStrings.pausedHint,
+        t('presence.paused.title', AppStrings.availabilityPaused),
+        t('presence.paused.hint', AppStrings.pausedHint),
         AppColors.amber,
       ),
     };

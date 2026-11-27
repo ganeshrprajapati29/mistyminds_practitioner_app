@@ -140,6 +140,15 @@ class AuthController extends Notifier<bool> {
 
   /// Registers this device's FCM token with the backend (and again whenever
   /// Firebase rotates it). Silently skipped while Firebase isn't configured.
+  /// Registers again (e.g. after notifications were turned on, or when the
+  /// app returns to the foreground). Returns true if a token was registered.
+  Future<bool> retryPushRegistration() async {
+    if (!state) return false;
+    await _registerForPush();
+    return PushService.instance.token != null &&
+        PushService.instance.lastProblem == null;
+  }
+
   Future<void> _registerForPush() async {
     final PushService push = PushService.instance;
     if (!PushService.isAvailable) return;
@@ -642,7 +651,7 @@ class PresenceController extends Notifier<PresenceState> {
       acceptTalkNow: s.acceptTalkNow,
       window: s.window,
     );
-    if (s.status == PresenceStatus.online) {
+    if (s.status != PresenceStatus.offline) {
       _startTicker();
     } else {
       _ticker?.cancel();
@@ -666,10 +675,16 @@ class PresenceController extends Notifier<PresenceState> {
 
   Future<void> resume() => goOnline();
 
+  /// Going offline (or pausing) is refused by the server while the 2-hour
+  /// online window is running — the error message says until when; the
+  /// screen then stays as the server has it.
   Future<void> goOffline() async {
-    _ticker?.cancel();
-    state = state.copyWith(status: PresenceStatus.offline);
-    _apply(await _repo.setPresence(status: PresenceStatus.offline));
+    try {
+      _apply(await _repo.setPresence(status: PresenceStatus.offline));
+    } catch (_) {
+      await refresh();
+      rethrow;
+    }
   }
 
   Future<void> setAcceptTalkNow(bool value) async {
@@ -683,14 +698,21 @@ class PresenceController extends Notifier<PresenceState> {
     }
   }
 
-  /// Counts the slot down once a minute while online.
+  /// Counts the 2-hour window down every second while online. When it runs
+  /// out the server takes them offline; this just picks that up.
   void _startTicker() {
     _ticker?.cancel();
-    _ticker = Timer.periodic(const Duration(minutes: 1), (_) {
-      if (state.status != PresenceStatus.online) return;
-      final Duration left = state.window.remaining - const Duration(minutes: 1);
+    _ticker = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      if (state.status == PresenceStatus.offline) return;
+      final DateTime? endsAt = state.window.endsAt;
+      final Duration left = endsAt != null
+          ? endsAt.difference(DateTime.now())
+          : state.window.remaining - const Duration(seconds: 1);
       if (left <= Duration.zero) {
-        unawaited(goOffline().catchError((Object _) {}));
+        state = state.copyWith(window: state.window.withRemaining(Duration.zero));
+        t.cancel();
+        // Give the server's minute sweep a moment, then read its state.
+        Future<void>.delayed(const Duration(seconds: 65), refresh);
         return;
       }
       state = state.copyWith(window: state.window.withRemaining(left));

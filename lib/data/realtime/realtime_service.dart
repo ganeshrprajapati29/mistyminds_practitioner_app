@@ -48,6 +48,8 @@ class RealtimeService {
     'chat:message',
     'session:ended',
     'session:updated',
+    'presence:updated',
+    'presence:forced',
     'notification:new',
     'typing:start',
     'typing:stop',

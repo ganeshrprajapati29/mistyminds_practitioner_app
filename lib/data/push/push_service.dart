@@ -149,16 +149,40 @@ class PushService {
   /// Asks for permission (Android 13+ / iOS) and returns this device's FCM
   /// token, or null if push is unavailable or refused.
   Future<String?> requestToken() async {
-    if (!_firebaseReady) return null;
+    if (!_firebaseReady) {
+      lastProblem = 'Push notifications aren’t set up on this device.';
+      return null;
+    }
     try {
       final NotificationSettings s = await FirebaseMessaging.instance
           .requestPermission();
-      if (s.authorizationStatus == AuthorizationStatus.denied) return null;
+      if (s.authorizationStatus == AuthorizationStatus.denied) {
+        lastProblem = 'Notifications are turned off for Misty Minds.';
+        return null;
+      }
       _token = await FirebaseMessaging.instance.getToken();
+      lastProblem = _token == null ? 'This phone didn’t give a notification token.' : null;
       return _token;
     } catch (e) {
       debugPrint('Could not get an FCM token: $e');
+      lastProblem = 'Couldn’t connect to Google notifications: $e';
       return null;
+    }
+  }
+
+  /// Why the last [requestToken] gave no token (null = working).
+  String? lastProblem;
+
+  /// True when notifications are allowed for the app (no prompt shown).
+  Future<bool> notificationsAllowed() async {
+    if (!_firebaseReady) return false;
+    try {
+      final NotificationSettings s = await FirebaseMessaging.instance
+          .getNotificationSettings();
+      return s.authorizationStatus == AuthorizationStatus.authorized ||
+          s.authorizationStatus == AuthorizationStatus.provisional;
+    } catch (_) {
+      return false;
     }
   }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_sizes.dart';
@@ -14,23 +13,29 @@ import '../../../../data/models/psychologist.dart';
 import '../../../../data/models/session.dart';
 import '../../../../data/models/transaction.dart';
 import '../../../../navigation/app_routes.dart';
+import '../../../../state/app_content_provider.dart';
 import '../../../../state/providers.dart';
 import '../../../guide/presentation/widgets/guide_video_tiles.dart';
 import '../widgets/earnings_insight_card.dart';
 import '../widgets/home_header.dart';
 import '../widgets/presence_card.dart';
+import '../widgets/push_health_banner.dart';
 import '../widgets/quote_card.dart';
 
 /// The psychologist dashboard, reproduced from the first reference screen.
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  static final Uri _relaxationUri = Uri.parse(
-    'https://youtube.com/@mistyminds1?si=EQ5lZBtfZcytw8JI',
-  );
+  static const String _relaxationUrl =
+      'https://youtube.com/@mistyminds1?si=EQ5lZBtfZcytw8JI';
 
-  Future<void> _openRelaxation() {
-    return launchUrl(_relaxationUri, mode: LaunchMode.externalApplication);
+  /// Content page for this screen (admin console → App content).
+  static const String _page = 'dashboard';
+
+  /// Runs [normal] — unless the admin attached a link to this card.
+  static VoidCallback _tap(AppContent c, String key, VoidCallback normal) {
+    final String? url = c.link(_page, key);
+    return url == null ? normal : () => openContentLink(url);
   }
 
   @override
@@ -43,6 +48,9 @@ class HomeScreen extends ConsumerWidget {
     final AsyncValue<List<EarningTransaction>> transactions = ref.watch(
       transactionsProvider,
     );
+    final AppContent c = ref.watch(appContentProvider);
+    String t(String key, String fallback) => c.text(_page, key, fallback);
+    final List<ContentLink> extraLinks = c.links(_page);
 
     return SafeArea(
       bottom: false,
@@ -54,6 +62,7 @@ class HomeScreen extends ConsumerWidget {
             ..invalidate(transactionsProvider)
             ..invalidate(notificationsProvider)
             ..invalidate(guideVideosProvider);
+          await ref.read(appContentProvider.notifier).refresh();
           await ref.read(sessionsProvider.future);
         },
         child: ListView(
@@ -73,34 +82,54 @@ class HomeScreen extends ConsumerWidget {
                   : HomeIdentity(profile: profile),
             ),
             const SizedBox(height: AppSizes.xl),
+            const PushHealthBanner(),
             const PresenceCard(),
             const SizedBox(height: AppSizes.md + 2),
             _Grid(
               children: <Widget>[
                 MistyDashboardCard(
                   icon: AppAssets.iconCalendar,
-                  title: AppStrings.setAvailability,
-                  subtitle: AppStrings.setAvailabilityHint,
-                  onTap: () => context.go(AppRoutes.calendar),
+                  title: t('availability.title', AppStrings.setAvailability),
+                  subtitle: t(
+                    'availability.hint',
+                    AppStrings.setAvailabilityHint,
+                  ),
+                  onTap: _tap(
+                    c,
+                    'availability.url',
+                    () => context.go(AppRoutes.calendar),
+                  ),
                 ),
                 MistyDashboardCard(
                   icon: AppAssets.iconTalkNow,
-                  title: AppStrings.talkNow,
-                  subtitle: AppStrings.talkNowHint,
-                  onTap: () => context.push(AppRoutes.goOnline),
+                  title: t('talkNow.title', AppStrings.talkNow),
+                  subtitle: t('talkNow.hint', AppStrings.talkNowHint),
+                  onTap: _tap(
+                    c,
+                    'talkNow.url',
+                    () => context.push(AppRoutes.goOnline),
+                  ),
                 ),
                 MistyDashboardCard(
                   icon: AppAssets.iconSessions,
-                  title: AppStrings.upcomingSessions,
+                  title: t('sessions.title', AppStrings.upcomingSessions),
                   value: '${today.length} today',
-                  onTap: () => context.push(AppRoutes.sessions),
+                  onTap: _tap(
+                    c,
+                    'sessions.url',
+                    () => context.push(AppRoutes.sessions),
+                  ),
                 ),
                 MistyDashboardCard(
                   icon: AppAssets.iconWallet,
-                  title: AppStrings.earnings,
+                  title: t('earnings.title', AppStrings.earnings),
                   value: earnings == null ? '—' : Fmt.money(earnings.thisMonth),
                   valueCaption: AppStrings.thisMonth,
-                  onTap: () => context.go(AppRoutes.earnings),
+                  onTap: _tap(
+                    c,
+                    'earnings.url',
+                    () => context.go(AppRoutes.earnings),
+                  ),
                 ),
               ],
             ),
@@ -115,9 +144,43 @@ class HomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: AppSizes.lg),
             const HomeGuideVideos(),
-            _RelaxationCard(onTap: _openRelaxation),
+            _RelaxationCard(
+              title: t('relaxation.title', 'A Moment for You'),
+              body: t(
+                'relaxation.body',
+                'You are always there for others. Take a little time to pause, breathe, and reconnect with yourself.',
+              ),
+              chips: <String>[
+                c.optional(
+                  _page,
+                  'relaxation.chip1',
+                  'Start Relaxation (English)',
+                ),
+                c.optional(
+                  _page,
+                  'relaxation.chip2',
+                  'Start Relaxation (Hindi)',
+                ),
+              ].where((String s) => s.isNotEmpty).toList(),
+              onTap: () => openContentLink(
+                c.link(_page, 'relaxation.url', fallback: _relaxationUrl) ??
+                    _relaxationUrl,
+              ),
+            ),
+            if (extraLinks.isNotEmpty) ...<Widget>[
+              const SizedBox(height: AppSizes.lg),
+              Text(
+                t('links.title', 'Helpful resources'),
+                style: AppTypography.title,
+              ),
+              const SizedBox(height: AppSizes.sm),
+              for (final ContentLink l in extraLinks) ...<Widget>[
+                _LinkCard(link: l),
+                const SizedBox(height: AppSizes.sm),
+              ],
+            ],
             const SizedBox(height: AppSizes.lg),
-            const QuoteCard(),
+            QuoteCard(text: t('quote.text', AppStrings.homeQuote)),
           ],
         ),
       ),
@@ -126,8 +189,16 @@ class HomeScreen extends ConsumerWidget {
 }
 
 class _RelaxationCard extends StatelessWidget {
-  const _RelaxationCard({required this.onTap});
+  const _RelaxationCard({
+    required this.title,
+    required this.body,
+    required this.chips,
+    required this.onTap,
+  });
 
+  final String title;
+  final String body;
+  final List<String> chips;
   final VoidCallback onTap;
 
   @override
@@ -168,7 +239,7 @@ class _RelaxationCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'A Moment for You',
+                      title,
                       style: AppTypography.body(
                         16,
                         weight: FontWeight.w700,
@@ -177,22 +248,24 @@ class _RelaxationCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'You are always there for others. Take a little time to pause, breathe, and reconnect with yourself.',
+                      body,
                       style: AppTypography.body(
                         13,
                         color: AppColors.textSecondary,
                         height: 1.45,
                       ),
                     ),
-                    const SizedBox(height: AppSizes.md),
-                    Wrap(
-                      spacing: AppSizes.sm,
-                      runSpacing: AppSizes.sm,
-                      children: const <Widget>[
-                        _RelaxationChip(label: 'Start Relaxation (English)'),
-                        _RelaxationChip(label: 'Start Relaxation (Hindi)'),
-                      ],
-                    ),
+                    if (chips.isNotEmpty) ...<Widget>[
+                      const SizedBox(height: AppSizes.md),
+                      Wrap(
+                        spacing: AppSizes.sm,
+                        runSpacing: AppSizes.sm,
+                        children: <Widget>[
+                          for (final String label in chips)
+                            _RelaxationChip(label: label),
+                        ],
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -249,6 +322,63 @@ class _RelaxationChip extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// One of the admin's own link cards (App content → Home dashboard).
+class _LinkCard extends StatelessWidget {
+  const _LinkCard({required this.link});
+
+  final ContentLink link;
+
+  @override
+  Widget build(BuildContext context) {
+    final bool video = RegExp(
+      r'youtu\.?be',
+      caseSensitive: false,
+    ).hasMatch(link.url);
+    return Material(
+      color: AppColors.surface,
+      borderRadius: AppSizes.brCard,
+      child: InkWell(
+        onTap: () => openContentLink(link.url),
+        borderRadius: AppSizes.brCard,
+        child: Container(
+          padding: const EdgeInsets.all(AppSizes.md + 2),
+          decoration: BoxDecoration(
+            borderRadius: AppSizes.brCard,
+            boxShadow: AppColors.softShadow,
+          ),
+          child: Row(
+            children: <Widget>[
+              Icon(
+                video
+                    ? Icons.play_circle_outline_rounded
+                    : Icons.link_rounded,
+                color: AppColors.mintInk,
+                size: 26,
+              ),
+              const SizedBox(width: AppSizes.md),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(link.title, style: AppTypography.title),
+                    if (link.subtitle.isNotEmpty)
+                      Text(link.subtitle, style: AppTypography.bodySmall),
+                  ],
+                ),
+              ),
+              const Icon(
+                Icons.open_in_new_rounded,
+                size: 18,
+                color: AppColors.textTertiary,
+              ),
+            ],
+          ),
         ),
       ),
     );

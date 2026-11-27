@@ -68,29 +68,70 @@ class TalkWindow {
     required this.start,
     required this.end,
     required this.remaining,
+    this.totalMinutes,
+    this.endsAt,
+    this.committed = false,
   });
 
-  /// `window` of `GET /practitioner/presence`
-  factory TalkWindow.fromJson(Json j) => TalkWindow(
-    start: _parseHm(j['start']),
-    end: _parseHm(j['end']),
-    remaining: Duration(minutes: asInt(j['remainingMinutes'])),
-  );
+  /// `window` of `GET /practitioner/presence`. Going online commits to a
+  /// fixed 2-hour window; [endsAt] is when it ends on THIS phone's clock
+  /// (worked out from the server's seconds-left, so a wrong phone clock
+  /// can't skew the countdown).
+  factory TalkWindow.fromJson(Json j) {
+    final int? seconds = j['remainingSeconds'] is num
+        ? (j['remainingSeconds'] as num).toInt()
+        : null;
+    final Duration remaining = seconds != null
+        ? Duration(seconds: seconds)
+        : Duration(minutes: asInt(j['remainingMinutes']));
+    return TalkWindow(
+      start: _parseHm(j['start']),
+      end: _parseHm(j['end']),
+      remaining: remaining,
+      totalMinutes: j['totalMinutes'] is num
+          ? (j['totalMinutes'] as num).toInt()
+          : null,
+      endsAt: seconds != null ? DateTime.now().add(remaining) : null,
+      committed: j['committed'] == true,
+    );
+  }
 
   final TimeOfDay start;
   final TimeOfDay end;
   final Duration remaining;
+  final int? totalMinutes;
+  final DateTime? endsAt;
 
-  Duration get total => Duration(
-    minutes: (end.hour * 60 + end.minute) - (start.hour * 60 + start.minute),
-  );
+  /// True once they've gone online — the window is running and fixed.
+  final bool committed;
+
+  Duration get total => totalMinutes != null
+      ? Duration(minutes: totalMinutes!)
+      : Duration(
+          minutes:
+              (end.hour * 60 + end.minute) - (start.hour * 60 + start.minute),
+        );
 
   double get progressLeft => total.inSeconds <= 0
       ? 0
       : (remaining.inSeconds / total.inSeconds).clamp(0.0, 1.0);
 
-  TalkWindow withRemaining(Duration r) =>
-      TalkWindow(start: start, end: end, remaining: r);
+  /// "01:42:07"
+  String get countdown {
+    final Duration d = remaining.isNegative ? Duration.zero : remaining;
+    String two(int n) => n.toString().padLeft(2, '0');
+    return '${two(d.inHours)}:${two(d.inMinutes.remainder(60))}:'
+        '${two(d.inSeconds.remainder(60))}';
+  }
+
+  TalkWindow withRemaining(Duration r) => TalkWindow(
+    start: start,
+    end: end,
+    remaining: r,
+    totalMinutes: totalMinutes,
+    endsAt: endsAt,
+    committed: committed,
+  );
 }
 
 /// Where the psychologist is in the Talk Now flow, as the server sees it.

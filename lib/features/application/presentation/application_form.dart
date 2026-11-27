@@ -23,7 +23,15 @@ class ApplicationForm {
   final TextEditingController degree = TextEditingController();
   final TextEditingController institution = TextEditingController();
   final TextEditingController graduationYear = TextEditingController();
+  final TextEditingController experienceYears = TextEditingController();
   final TextEditingController workplace = TextEditingController();
+
+  /// Whole years of practice entered on the Professional step.
+  int get experienceYearsValue =>
+      int.tryParse(experienceYears.text.trim()) ?? 0;
+
+  String get experienceLabel =>
+      '$experienceYearsValue ${experienceYearsValue == 1 ? 'year' : 'years'}';
 
   final Set<String> specializations = <String>{};
   final Set<String> languages = <String>{'English'};
@@ -45,6 +53,9 @@ class ApplicationForm {
 
   /// Document name → the file's original name, for display.
   final Map<String, String> documentNames = <String, String>{};
+
+  /// The chosen professional photo, kept so the form can show it.
+  List<int>? photoBytes;
 
   final TextEditingController accountHolder = TextEditingController();
   final TextEditingController bankName = TextEditingController();
@@ -134,7 +145,8 @@ class ApplicationForm {
       'degree': degree.text.trim(),
       'institution': institution.text.trim(),
       'graduationYear': graduationYear.text.trim(),
-      'experience': '0 years',
+      'experience': experienceLabel,
+      'experienceYears': experienceYearsValue,
       'workplace': workplace.text.trim(),
     },
     'practice': <String, Object?>{
@@ -169,6 +181,7 @@ class ApplicationForm {
       degree,
       institution,
       graduationYear,
+      experienceYears,
       workplace,
       bio,
       registrationNumber,

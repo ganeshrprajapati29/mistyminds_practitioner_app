@@ -25,10 +25,10 @@ class RemainingTimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget timer = AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 150),
       child: Text(
-        Fmt.hm(window.remaining),
-        key: ValueKey<Duration>(window.remaining),
+        window.countdown,
+        key: ValueKey<int>(window.remaining.inSeconds),
         style: AppTypography.timer,
       ),
     );
@@ -51,7 +51,7 @@ class RemainingTimeCard extends StatelessWidget {
               children: <Widget>[
                 timer,
                 Text(
-                  AppStrings.remainingInSlot,
+                  'remaining in your 2-hour online window',
                   style: AppTypography.body(14, color: AppColors.textSecondary),
                 ),
                 const SizedBox(height: AppSizes.lg),
@@ -92,7 +92,7 @@ class RemainingTimeCard extends StatelessWidget {
                       children: <Widget>[
                         timer,
                         Text(
-                          AppStrings.remainingToday,
+                          'online once you start (2 hours)',
                           style: AppTypography.body(
                             14,
                             color: AppColors.textSecondary,
@@ -106,7 +106,7 @@ class RemainingTimeCard extends StatelessWidget {
                 Divider(color: AppColors.primary.withValues(alpha: 0.10)),
                 const SizedBox(height: AppSizes.md),
                 Text(
-                  '${AppStrings.todaysWindow} · '
+                  'Going online keeps you available for 2 hours · '
                   '${Fmt.timeOfDay(window.start)} – ${Fmt.timeOfDay(window.end)}',
                   textAlign: TextAlign.center,
                   style: AppTypography.body(

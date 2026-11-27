@@ -78,6 +78,10 @@ final Provider<void> realtimeBridgeProvider = Provider<void>((Ref ref) {
           case 'session:ended':
           case 'session:updated':
             refreshSessions();
+          // The 2-hour online window ended, or an admin set them offline.
+          case 'presence:updated':
+          case 'presence:forced':
+            unawaited(ref.read(presenceProvider.notifier).refresh());
         }
       }),
     );
